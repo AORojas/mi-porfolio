@@ -175,9 +175,9 @@ function App() {
   );
   const courses = education.filter((item) => item.category === "Cursos");
   const contact = portfolio?.contact;
-  const projectPlaceholders = Array.from({ length: Math.max(0, 9 - projects.length) }, (_, index) => ({
-    title: `Proyecto ${String(index + 2).padStart(2, "0")}`,
-    description: "Espacio reservado para seguir sumando proyectos reales al portfolio.",
+  const projectPlaceholders = Array.from({ length: 1 }, (_, index) => ({
+    title: `Proyecto ${String(index + 3).padStart(2, "0")}`,
+    description: "proximamente...",
     stack: ["Próximamente"],
     comingSoon: true
   }));
@@ -191,23 +191,23 @@ function App() {
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(77,99,255,0.25),_transparent_35%),linear-gradient(180deg,_#020617_0%,_#020617_45%,_#0f172a_100%)]" />
 
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+      <header className="flex items-center justify-between max-w-6xl px-6 py-6 mx-auto">
         <NeonLetters
           text="PORTFOLIO"
           className="text-lg font-semibold tracking-[0.24em] text-brand-300"
         />
         <a
           href="#contacto"
-          className="rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-brand-400 hover:text-white"
+          className="px-4 py-2 text-sm transition border rounded-full border-white/15 text-slate-200 hover:border-brand-400 hover:text-white"
         >
           Hablemos
         </a>
       </header>
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-20 px-6 pb-16 pt-8">
+      <main className="flex flex-col max-w-6xl gap-20 px-6 pt-8 pb-16 mx-auto">
         <section className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
           <div className="space-y-6">
-            <span className="inline-flex rounded-full border border-brand-400/30 bg-brand-500/10 px-4 py-2 text-sm text-brand-100">
+            <span className="inline-flex px-4 py-2 text-sm border rounded-full border-brand-400/30 bg-brand-500/10 text-brand-100">
               {loading ? "Cargando presentación..." : hero?.badge}
             </span>
             <div className="space-y-4">
@@ -227,13 +227,13 @@ function App() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#proyectos"
-                className="rounded-full bg-brand-500 px-6 py-3 font-medium text-white shadow-glow transition hover:bg-brand-400"
+                className="px-6 py-3 font-medium text-white transition rounded-full bg-brand-500 shadow-glow hover:bg-brand-400"
               >
                 Ver proyectos
               </a>
               <a
                 href="#sobre-mi"
-                className="rounded-full border border-white/15 px-6 py-3 font-medium text-slate-200 transition hover:border-white/40 hover:text-white"
+                className="px-6 py-3 font-medium transition border rounded-full border-white/15 text-slate-200 hover:border-white/40 hover:text-white"
               >
                 Sobre mí
               </a>
@@ -250,7 +250,7 @@ function App() {
                   (item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-slate-900/80 px-4 py-2 text-sm text-slate-200"
+                      className="px-4 py-2 text-sm border rounded-full border-white/10 bg-slate-900/80 text-slate-200"
                     >
                       {item}
                     </span>
@@ -261,7 +261,7 @@ function App() {
                 {highlights.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-2xl border border-white/10 bg-slate-900/70 p-4"
+                    className="p-4 border rounded-2xl border-white/10 bg-slate-900/70"
                   >
                     <p className="text-2xl font-semibold text-white">{item.value}</p>
                     <p className="mt-1 text-sm text-slate-400">{item.label}</p>
@@ -275,7 +275,7 @@ function App() {
         <section id="tecnologias" className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
           <div className="space-y-4">
             <SectionTitle eyebrow="Tecnologías" title="Stack principal para frontend, backend y datos" />
-            <p className="text-slate-300 leading-8">
+            <p className="leading-8 text-slate-300">
               Trabajo principalmente con tecnologías orientadas a productos web modernos,
               interfaces cuidadas y APIs preparadas para escalar.
             </p>
@@ -302,14 +302,53 @@ function App() {
           </div>
         </section>
 
+        <section
+          id="sobre-mi"
+          className="flex justify-center px-1"
+        >
+          <div className="group relative w-full max-w-5xl overflow-hidden rounded-[2rem] p-[2px]">
+            <div className="absolute inset-[-20%] opacity-100 animate-[spin_5s_linear_infinite]">
+              <div className="h-full w-full bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0%,#00d2ff_15%,#3a7bd5_30%,transparent_45%)] blur-[24px]" />
+            </div>
+            <div className="pointer-events-none absolute inset-0 z-10 rounded-[2rem] border border-blue-500/20" />
+            <div className="relative z-20 flex w-full flex-col items-center gap-12 rounded-[calc(2rem-2px)] bg-[#0b0f1a] p-10 md:flex-row md:p-14">
+              <div className="flex-1 space-y-6 text-gray-300">
+                <span className="font-mono text-sm tracking-widest text-blue-500 uppercase">
+                  Sobre mí
+                </span>
+                <div className="space-y-5 text-lg leading-relaxed">
+                  <p>{loading ? "Cargando..." : portfolio?.about?.description}</p>
+                  {!loading && portfolio?.about?.bio?.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+
+              {portfolio?.about?.image && (
+                <div className="relative h-72 w-72 shrink-0 md:h-96 md:w-96">
+                  <div className="absolute -inset-1 rounded-full bg-blue-500/20 blur-lg" />
+                  <img
+                    src={portfolio.about.image}
+                    alt="Foto de perfil"
+                    className="relative object-cover object-center w-full h-full border shadow-2xl rounded-full border-white/5"
+                    onError={(e) => {
+                      e.target.style.display = "none";
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
         <section id="proyectos" className="space-y-8">
           <SectionTitle
             eyebrow="Proyectos"
-            title="Una primera selección para mostrar trabajo real"
+            title="Soluciones digitales desarrolladas con el stack óptimo para cada desafío técnico"
           />
 
           {error ? (
-            <div className="rounded-3xl border border-rose-400/20 bg-rose-400/10 p-6 text-rose-100">
+            <div className="p-6 border rounded-3xl border-rose-400/20 bg-rose-400/10 text-rose-100">
               {error}
             </div>
           ) : (
@@ -331,7 +370,7 @@ function App() {
           <div className="space-y-10">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="h-px flex-1 bg-gradient-to-r from-brand-400/70 to-transparent" />
+                <div className="flex-1 h-px bg-gradient-to-r from-brand-400/70 to-transparent" />
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-200">
                   Educación
                 </p>
@@ -359,7 +398,7 @@ function App() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="h-px flex-1 bg-gradient-to-r from-white/25 to-transparent" />
+                <div className="flex-1 h-px bg-gradient-to-r from-white/25 to-transparent" />
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-300">
                   Cursos
                 </p>
@@ -392,14 +431,14 @@ function App() {
           className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur"
         >
           <SectionTitle eyebrow="Contacto" title="Listo para transformar ideas en producto" />
-          <div className="mt-6 flex flex-col gap-4 text-slate-300 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-4 mt-6 text-slate-300 md:flex-row md:items-center md:justify-between">
             <div>
               <p>{contact?.email || "tu-email@ejemplo.com"}</p>
               <p>{contact?.location || "Tu ciudad, tu país"}</p>
             </div>
             <a
               href={`mailto:${contact?.email || "tu-email@ejemplo.com"}`}
-              className="inline-flex rounded-full bg-white px-6 py-3 font-medium text-slate-950 transition hover:bg-brand-100"
+              className="inline-flex px-6 py-3 font-medium transition bg-white rounded-full text-slate-950 hover:bg-brand-100"
             >
               Enviar email
             </a>

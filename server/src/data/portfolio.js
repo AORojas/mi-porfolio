@@ -5,6 +5,17 @@ export const portfolioData = {
     description:
       "Este portfolio está pensado para crecer junto a mis proyectos. Combina un frontend moderno, backend robusto y una base flexible para mostrar tecnologías, formación y trabajo real."
   },
+  about: {
+    title: "Sobre mí",
+    description:
+      "Próximo a diplomarme como Analista en Informática y estudiante avanzado de la Licenciatura, me defino como un desarrollador Full Stack versátil.",
+    bio: [
+      "Mi formación combina el rigor académico con una mentalidad autodidacta, permitiéndome adaptarme y dominar diversas tecnologías según el desafío.",
+      "Día a día, mi prioridad es la implementación de mejores prácticas, patrones de diseño y arquitecturas escalables para crear soluciones de impacto real."
+    ],
+    image: "/projects/sobre-mi-final.png"
+  },
+
   highlights: [
     { label: "Frontend moderno", value: "React + Tailwind" },
     { label: "Backend flexible", value: "Node o Spring Boot" },
@@ -86,6 +97,25 @@ export const portfolioData = {
   ],
   projects: [
     {
+      title: "Sharps - Alquiler de autos",
+      type: "Full Stack CRUD",
+      year: "2025",
+      description:
+        "Plataforma web completa de alquiler de vehículos desarrollada con el stack MERN. Implementa funcionalidades CRUD para gestionar reservas, disponibilidad de vehículos y datos de usuarios, con una interfaz moderna y responsiva.",
+      stack: ["HTML", "Tailwind CSS", "JavaScript", "React.js", "Node.js", "Express", "TypeScript", "MongoDB", "Vercel", "Render"],
+      image: "/projects/sharp-alquiler-autos.png",
+      liveUrl: "https://app-reservas-vehiculos-main-p6mx.vercel.app/",
+      repoUrl: "https://github.com/AORojas/app-reservas-vehiculos-main",
+      deployment: ["Vercel", "Render"],
+      highlights: [
+        "CRUD completo para gestión de reservas, vehículos y usuarios con interfaz intuitiva.",
+        "Stack MERN con TypeScript para mayor robustez y mantenibilidad del código.",
+        "Diseño responsivo con Tailwind CSS para experiencia óptima en múltiples dispositivos.",
+        "Deployado en Vercel (frontend) y Render (backend) para garantizar disponibilidad y escalabilidad."
+      ],
+      featured: true
+    },
+    {
       title: "Juegos Rápidos",
       type: "Frontend",
       year: "2026",
@@ -101,6 +131,29 @@ export const portfolioData = {
         "Demuestra enfoque en UI visual, lógica de interfaz y despliegue de un sitio estático listo para publicar."
       ],
       featured: true
+    },
+    {
+      title: "Analizador BNF",
+      type: "Full Stack",
+      year: "2026",
+      description:
+        "Herramienta interactiva para escribir gramáticas, elegir el símbolo inicial y validar múltiples cadenas con derivaciones paso a paso y árbol de parsing.",
+      stack: [
+        "Python (Flask)",
+        "PostgreSQL",
+        "SQLAlchemy",
+        "JavaScript (ES6+)",
+        "Cloud Deployment (Render)",
+        "pytest"
+      ],
+      image: "/projects/bnf-analyzer.png",
+      liveUrl: "https://bnf-analyzer.onrender.com/",
+      repoUrl: "https://github.com/AORojas/bnf-analyzer",
+      highlights: [
+        "Permite definir gramáticas BNF y seleccionar el símbolo inicial de análisis.",
+        "Valida múltiples cadenas con explicaciones claras, derivación paso a paso y visualización del árbol de parsing.",
+        "Combina backend en Python/Flask con frontend dinámico en JavaScript y despliegue en la nube."
+      ]
     }
   ],
   education: [
@@ -110,7 +163,7 @@ export const portfolioData = {
       institution: "Universidad Nacional del Oeste (UNO) - Merlo, Buenos Aires, GBA",
       period: "marzo 2021 - junio 2026",
       description:
-        "Actualmente cursando la etapa final de la carrera, con dos materias finalizadas para recibirme en junio de 2026."
+        "Actualmente cursando la etapa final de la carrera, con dos materias finalizadas para recibirme en julio de 2026."
     },
     {
       category: "Educación",
